@@ -21,6 +21,26 @@ class LinkedList {
         }
     }
 
+    getNodeAt(index){
+        //if index is out of range
+        if(index < 0 || index > this.size){
+            console.log(`The index ${index} is out of range`)
+            return;
+        }
+
+        let current = this.head;
+        let count = 0;
+
+        while(current){
+            if(count === index){
+                console.log(current);
+            }
+            count++;
+            current = current.next;
+        }
+        return null;
+    }
+
     // insert first node
     insertFirst(data){
         this.head = new Node(data, this.head);
@@ -90,4 +110,7 @@ ll.insertAt(30,9);
 ll.insertAt(0,1);
 ll.insertAt(5,2);
 ll.printListData();
-//console.log(ll);
+ll.getNodeAt(-3);
+ll.getNodeAt(3);
+ll.getNodeAt(20);
+console.log(ll);
