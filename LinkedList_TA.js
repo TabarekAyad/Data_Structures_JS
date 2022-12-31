@@ -95,7 +95,33 @@ class LinkedList {
         previous.next = node;
 
         this.size++;
+    }
 
+    //remove a node at an index
+    removeAt(index){
+        let current = this.head;
+        let count = 0;
+        let previous;
+
+        //if index is out of range
+        if(index < 0 || index > this.size){
+            console.log(`The index ${index} is out of range`)
+            return;
+        }
+
+        //if index = 0, noode is head
+        if(index === 0){
+            this.head = current.next;
+            this.size--;
+        }else{
+            while(count < index){
+                previous = current;
+                current = current.next;
+                count++;
+            }
+            previous.next = current.next;
+            this.size--;
+        }
     }
 
 }
@@ -105,12 +131,17 @@ const ll = new LinkedList;
 ll.insertFirst(10);
 ll.insertLast (20);
 ll.insertFirst(-10);
-ll.insertAt(-20,-1);
-ll.insertAt(30,9);
+//ll.insertAt(-20,-1);
+//ll.insertAt(30,9);
 ll.insertAt(0,1);
 ll.insertAt(5,2);
 ll.printListData();
 ll.getNodeAt(-3);
 ll.getNodeAt(3);
 ll.getNodeAt(20);
+ll.removeAt(12);
+ll.removeAt(0);
+ll.removeAt(1);
+ll.removeAt(2);
+ll.printListData();
 console.log(ll);
