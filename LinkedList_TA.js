@@ -1,7 +1,7 @@
 class Node {
     constructor(data, next = null){
-        this.data = data;
-        this.next = next;
+        this.data = (data === undefined ? 0 : data);
+        this.next = (next === undefined ? null : next);
     }
 }
 
@@ -124,6 +124,11 @@ class LinkedList {
         }
     }
 
+    clearAll(){
+        this.head = null;
+        this.size = 0;
+    }
+
 }
 
 const ll = new LinkedList;
@@ -131,8 +136,8 @@ const ll = new LinkedList;
 ll.insertFirst(10);
 ll.insertLast (20);
 ll.insertFirst(-10);
-//ll.insertAt(-20,-1);
-//ll.insertAt(30,9);
+ll.insertAt(-20,-1);
+ll.insertAt(30,9);
 ll.insertAt(0,1);
 ll.insertAt(5,2);
 ll.printListData();
@@ -145,3 +150,5 @@ ll.removeAt(1);
 ll.removeAt(2);
 ll.printListData();
 console.log(ll);
+ll.clearAll();
+ll.printListData();
